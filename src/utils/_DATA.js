@@ -127,7 +127,7 @@ export function _getUsers () {
 
 export function _getQuestions () {
   return new Promise((res, rej) => {
-    setTimeout(() => res({...questions}), 1000)
+    setTimeout(() => res({...questions}), 2)
   })
 }
 
@@ -174,6 +174,7 @@ export function _saveQuestion (question) {
 export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
+      console.log("arguments", authedUser, qid, answer)
       users = {
         ...users,
         [authedUser]: {

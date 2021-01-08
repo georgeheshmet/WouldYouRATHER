@@ -8,6 +8,7 @@ export const HandleGetData =()=>{
         return Promise.all([_getQuestions(), _getUsers()]).then(([questions, users])=>{
             dispatch(GetUsers(users))
             dispatch(GetQuestions(questions))
+            dispatch(SetAuthUser("johndoe"))
             //dispatch(SetAuthUser(null))
         }).catch(console.log("failed to get data from server"))
     }
