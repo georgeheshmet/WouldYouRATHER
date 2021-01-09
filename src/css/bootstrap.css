@@ -60,7 +60,11 @@ html {
   margin: 10px;
 }
 
-
+.addBg {
+  color: blue;
+  background-color: #9acbe7;
+  
+}
 
 .avatar-big {
   height: 200px;
@@ -343,9 +347,6 @@ legend {
   white-space: normal;
 }
 
-progress {
-  vertical-align: baseline;
-}
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {

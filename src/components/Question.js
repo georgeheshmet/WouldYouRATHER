@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { _saveQuestionAnswer } from '../utils/_DATA'
+import { HandleAnswer } from '../actions/shared'
 class Question extends Component {
     state={
         choice: 1
@@ -15,14 +15,20 @@ class Question extends Component {
         if(answer.length<1){
             alert("please choose an answer")
         }
+        else
+        {
+
         const { authedUser, qid } =this.props
         
         console.log("passed rpos x ",authedUser ,qid,answer)
-        return _saveQuestionAnswer({authedUser, qid, answer }).then(()=>(this.props.history.push('/tweet'))).catch((e)=>(
-            alert(`error ${e} occured`)
-        ))
 
-    }
+        this.props.dispatch(HandleAnswer({authedUser ,qid,answer }))
+        // return _saveQuestionAnswer({authedUser, qid, answer }).then(()=>(this.props.history.push('/tweet'))).catch((e)=>(
+        //     alert(`error ${e} occured`)
+        // ))
+                    
+        }
+        }
     render() {
         console.log(this.props)
       return (

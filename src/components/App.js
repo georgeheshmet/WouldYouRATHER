@@ -10,6 +10,8 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 import Question from './Question'
 //import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
+import PollResult from './PollResult'
+
 // import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends Component {
@@ -30,7 +32,9 @@ class App extends Component {
         //<AllQuestions questionIDS={["8xf0y6ziyjabvozdd253nd", "6ni6ok3ym7mf1p33lnez",  "am8ehyc8byjqgar0jgpub9",  "loxhs1bqm25b708cmbf3g"]}/>
         <div>
          <Nav/>
-        <Route path='/' exact render={()=>(<Question qid={"8xf0y6ziyjabvozdd253nd"}/>) }/>
+        {/* <Route path='/' exact render={()=>(<PollResult qid={"xj352vofupe1dqz9emx13r"}/>) }/> */}
+        <Route path='/' exact render={()=>(<Question qid={'8xf0y6ziyjabvozdd253nd'}/>) }/>
+        
         </div>}
        </Fragment>
       </Router>   
@@ -44,8 +48,8 @@ class App extends Component {
 //export default connect()(App)
 
 export default connect(
-  ({ questions })=>(
-    { loading:  Object.keys(questions).length === 0
+  ({ questions,users ,authedUser})=>(
+    { loading: Object.keys(users).length === 0 ||  Object.keys(questions).length === 0 ||  authedUser===null
      }
   )  
   )(App)
