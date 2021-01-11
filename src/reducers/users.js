@@ -5,9 +5,9 @@ export const users =(state={} , action)=>{
         case GET_USERS:
             return { ...action.users}
         case ADD_USER_ANSWER:
-            const {authedUser, qid, answer } = action
+            const {authedUser, question_id, answer } = action
             return {
-                ...state,[authedUser]: {...state[authedUser], answers:{ ...state[authedUser].answers,[qid]: answer}}
+                ...state,[authedUser]: {...state[authedUser], answers:{ ...state[authedUser].answers,[question_id]: answer}}
             }
     }
     return state

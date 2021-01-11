@@ -10,11 +10,11 @@ export const GetQuestions=(questions)=>{
     }
 }
 
-export const SaveAnswer=({authedUser, qid, answer })=>{
+export const SaveAnswer=({authedUser, question_id, answer })=>{
     return {
         type: SAVE_ANSWER_TO_QUESTION,
         authedUser,
-        qid,
+        question_id,
         answer
     }
 }

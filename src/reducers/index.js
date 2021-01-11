@@ -5,5 +5,5 @@ import { authedUser } from './authedUser'
 import { loadingBarReducer } from 'react-redux-loading'
 
 export default combineReducers({
-    users, questions, authedUser
+    users, questions, authedUser,loadingBar: loadingBarReducer,
 })

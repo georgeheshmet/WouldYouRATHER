@@ -25,6 +25,7 @@ class NewQuestion extends Component {
     HandleSubmit=(e)=>{
         e.preventDefault()
         const {optionOne, optionTwo} = this.state
+        console.log(optionOne, optionTwo)
         this.props.dispatch(HandleAddQuestion({optionOne, optionTwo})).
         then(()=>(
             this.props.history.push('/')

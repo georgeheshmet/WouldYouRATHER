@@ -19,13 +19,13 @@ class Question extends Component {
         else
         {
 
-        const { authedUser, qid } =this.props
+        const { authedUser, question_id } =this.props
         
-        console.log("passed rpos x ",authedUser ,qid,answer)
+        console.log("passed rpos x ",authedUser ,question_id,answer)
         
         
-        this.props.dispatch(HandleAnswer({authedUser ,qid,answer })).then(()=>(
-            this.props.history.push(`/PollResult/${this.props.qid}`)
+        this.props.dispatch(HandleAnswer({authedUser ,question_id,answer })).then(()=>(
+            this.props.history.push(`/PollResult/${this.props.question_id}`)
         )).
         
         catch((e)=>
@@ -56,7 +56,7 @@ class Question extends Component {
                          </div>
                          <div>
                          <input  type='radio' name='answer' value='optionTwo'/>
-                         <label className='p-3'>{this.props.question.optionOne.text}</label> 
+                         <label className='p-3'>{this.props.question.optionTwo.text}</label> 
                          </div>
                          <button className="btn btn-primary" disabled={this.state.value===''} type="submit" >submit</button>
                     </form>
@@ -75,9 +75,9 @@ class Question extends Component {
       (state, passedProps)=>{
 
           const { questions, authedUser,users }= state
-          const { qid }= passedProps.match.params
+          const { question_id }= passedProps.match.params
           return {
-              question:questions[qid], authedUser:authedUser, qid:qid, user:users[questions[qid].author]
+              question:questions[question_id], authedUser:authedUser, question_id:question_id, user:users[questions[question_id].author]
           }
 
       }

@@ -16,12 +16,12 @@ export const HandleGetData =()=>{
     }
     }
 
-export const HandleAnswer=({authedUser, qid, answer })=>{
+export const HandleAnswer=({authedUser, question_id, answer })=>{
 
         return(dispatch)=>{
-            return(_saveQuestionAnswer({authedUser, qid, answer })).then(()=>{
-                dispatch(SaveAnswer({authedUser, qid, answer }))
-                dispatch(AddAnswerUser({authedUser, qid, answer }))
+            return(_saveQuestionAnswer({authedUser, question_id, answer })).then(()=>{
+                dispatch(SaveAnswer({authedUser, question_id, answer }))
+                dispatch(AddAnswerUser({authedUser, question_id, answer }))
             })
         }
 

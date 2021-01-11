@@ -8,11 +8,11 @@ export const GetUsers=(users)=>{
     }
 }
 
-export const AddAnswerUser=({authedUser, qid, answer })=>{
+export const AddAnswerUser=({authedUser, question_id, answer })=>{
     return {
         type: ADD_USER_ANSWER,
         authedUser,
-        qid,
+        question_id,
         answer
     }
 }

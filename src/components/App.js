@@ -23,18 +23,22 @@ class App extends Component {
     return (
       <Router>
       <Fragment>
-          {this.props.authorized=== false?<SignIn/>:
-          this.props.loading===true?
-          <div>Loading</div>:
+          {this.props.loading===true?
+          <div>
+          <div>Loading</div>
+          <LoadingBar style={{ backgroundColor: '#17a2b8', height: '5px' }}/>
+          </div>
+          :this.props.authorized=== false?<SignIn/>:
+          
           <div>
          <Nav/>
-        {/* <Route path='/' exact render={()=>(<PollResult qid={"xj352vofupe1dqz9emx13r"}/>) }/> */}
-        {/* <Route path='/' exact render={()=>(<Question match={{params:{qid:'8xf0y6ziyjabvozdd253nd'}}}/>) }/> */}
-        <Route path='/newQuestion' exact component={NewQuestion}/>
+        {/* <Route path='/' exact render={()=>(<PollResult question_id={"xj352vofupe1dqz9emx13r"}/>) }/> */}
+        {/* <Route path='/' exact render={()=>(<Question match={{params:{question_id:'8xf0y6ziyjabvozdd253nd'}}}/>) }/> */}
+        <Route path='/add' exact component={NewQuestion}/>
         <Route path ='/' exact component ={Dashboard}/>
-        <Route path ='/question/:qid' exact component={Question}/>
-        <Route path ='/PollResult/:qid' exact component={PollResult}/>
-        <Route path ='/LeaderBoard' render={()=>(<LeaderBoard userId="sarahedo"/>)}/>
+        <Route path ='/question/:question_id' exact component={Question}/>
+        <Route path ='/PollResult/:question_id' exact component={PollResult}/>
+        <Route path ='/leaderboard' render={()=>(<LeaderBoard userId="sarahedo"/>)}/>
         </div>}
        </Fragment>
       </Router>   

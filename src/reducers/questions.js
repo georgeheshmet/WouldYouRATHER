@@ -6,9 +6,9 @@ export const questions =(state={} , action)=>{
         case GET_QUESTIONS:
             return { ...action.questions}
         case SAVE_ANSWER_TO_QUESTION:
-          const  { authedUser, qid, answer }= action
+          const  { authedUser, question_id, answer }= action
           return {
-              ...state,[qid]: {...state[qid],[answer]:{ ...state[qid][answer],votes:[...state[qid][answer].votes,  authedUser]}}
+              ...state,[question_id]: {...state[question_id],[answer]:{ ...state[question_id][answer],votes:[...state[question_id][answer].votes,  authedUser]}}
           }
         case ADD_QUESTION:
           return {
