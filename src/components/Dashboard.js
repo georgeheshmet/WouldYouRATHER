@@ -21,8 +21,8 @@ class Dashboard extends Component {
         <div className='row justify-content-center'>
             <div className='row justify-content-center border rounded w-50 p-3 m-2'>
             <div className="btn-group" role="group" aria-label="Basic example">
-                <button onClick={this.answered} type="button" className="btn btn-secondary">answered questions</button>
-                <button onClick={this.unanswered} type="button" className="btn btn-secondary">unanswered questions</button>
+                <button onClick={this.answered} type="button" className="btn btn-outline-info btn-lg">answered questions</button>
+                <button onClick={this.unanswered} type="button" className="btn btn-outline-info btn-lg">unanswered questions</button>
             </div>
             <AllQuestions questionIDS={this.state.viewAnswered?this.props.AnsweredQ:this.props.UnansweredQ}/>
             </div>
