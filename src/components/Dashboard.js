@@ -6,7 +6,7 @@ import AllQuestions from './AllQuestions'
 class Dashboard extends Component {
 
     state={
-        viewAnswered: true
+        viewAnswered: false
     }
 
     answered=()=>{
@@ -50,6 +50,18 @@ export default connect(
 
             })
         }
+        if(AnsweredQ.length!==0){
+            AnsweredQ.sort((a,b)=>(
+                questions[b].timestamp-questions[a].timestamp
+            ))
+        }
+
+        if(UnansweredQ.length!==0){
+            UnansweredQ.sort((a,b)=>(
+                questions[b].timestamp-questions[a].timestamp
+            ))
+        }
+
         return {
             AnsweredQ :  AnsweredQ, UnansweredQ: UnansweredQ, authedUser: authedUser
         }
