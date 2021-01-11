@@ -2,11 +2,12 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { HandleAnswer } from '../actions/shared'
+
 class Question extends Component {
+
     state={
-        choice: 1
+        value:''
     }
-    
 
     handleSelection=(event)=>{
         event.preventDefault()
@@ -21,14 +22,20 @@ class Question extends Component {
         const { authedUser, qid } =this.props
         
         console.log("passed rpos x ",authedUser ,qid,answer)
-
-        this.props.dispatch(HandleAnswer({authedUser ,qid,answer }))
-        // return _saveQuestionAnswer({authedUser, qid, answer }).then(()=>(this.props.history.push('/tweet'))).catch((e)=>(
-        //     alert(`error ${e} occured`)
-        // ))
-                    
+        
+        
+        this.props.dispatch(HandleAnswer({authedUser ,qid,answer })).then(()=>(
+            this.props.history.push(`/PollResult/${this.props.qid}`)
+        )).
+        
+        catch((e)=>
+            alert(`error ${e} occured`))
+                        
         }
         }
+    handleChange=(event)=>{
+        this.setState(()=>({value:event.target.value}))
+    }
     render() {
         console.log(this.props)
       return (
@@ -41,7 +48,7 @@ class Question extends Component {
                  <div className = 'col-md-auto'>
                      <h2>Would you rather....</h2>
                      <div>
-                     <form onSubmit={(event)=>(this.handleSelection(event))}>
+                     <form onChange={this.handleChange} onSubmit={(event)=>(this.handleSelection(event))}>
                          <div>
                              
                          <input  type='radio' name='answer' value='optionOne'/>
@@ -51,7 +58,7 @@ class Question extends Component {
                          <input  type='radio' name='answer' value='optionTwo'/>
                          <label className='p-3'>{this.props.question.optionOne.text}</label> 
                          </div>
-                         <button className="btn btn-primary" type="submit">submit</button>
+                         <button className="btn btn-primary" disabled={this.state.value===''} type="submit" >submit</button>
                     </form>
                     </div>
                  </div>
@@ -68,7 +75,7 @@ class Question extends Component {
       (state, passedProps)=>{
 
           const { questions, authedUser,users }= state
-          const qid = passedProps.qid
+          const { qid }= passedProps.match.params
           return {
               question:questions[qid], authedUser:authedUser, qid:qid, user:users[questions[qid].author]
           }

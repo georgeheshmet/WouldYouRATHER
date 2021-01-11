@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 import './css/bootstrap.css'
+import './css/wouldyourather.css'
 import 'redux'
 import middleware from './middleware'
 import { createStore } from 'redux'

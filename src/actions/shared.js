@@ -1,15 +1,17 @@
 import { _getQuestions, _getUsers } from '../utils/_DATA'
 import { GetUsers , AddAnswerUser} from './users'
 import { GetQuestions, SaveAnswer } from './questions'
-import { SetAuthUser } from './authedUser'
 import { _saveQuestionAnswer } from '../utils/_DATA'
+import { showLoading, hideLoading  } from 'react-redux-loading'
+
 export const HandleGetData =()=>{
     return (dispatch)=>{
+        dispatch(showLoading())
         return Promise.all([_getQuestions(), _getUsers()]).then(([questions, users])=>{
+
             dispatch(GetUsers(users))
             dispatch(GetQuestions(questions))
-            dispatch(SetAuthUser("johndoe"))
-            //dispatch(SetAuthUser(null))
+            dispatch(hideLoading())
         }).catch(console.log("failed to get data from server"))
     }
     }
@@ -20,8 +22,7 @@ export const HandleAnswer=({authedUser, qid, answer })=>{
             return(_saveQuestionAnswer({authedUser, qid, answer })).then(()=>{
                 dispatch(SaveAnswer({authedUser, qid, answer }))
                 dispatch(AddAnswerUser({authedUser, qid, answer }))
-            }).catch((e)=>(
-                alert(`error ${e} occured`)))
+            })
         }
 
 }

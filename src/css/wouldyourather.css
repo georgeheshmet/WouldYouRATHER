@@ -1,0 +1,35 @@
+.avatar-small {
+    height: 50px;
+  }
+
+  .avatar {
+    height: 50px;
+    border-radius: 25px;
+    margin: 10px;
+  }
+  
+  .addBg {
+    color: blue;
+    background-color: #9acbe7;
+    
+  }
+  
+  .avatar-big {
+    height: 200px;
+  }
+  
+  
+  
+  .avatar-extra-small {
+    height: 30px;
+    width: 30px;
+    border-radius: 25px;
+    margin: 10px;
+  }
+  
+  .number-big {
+    height: 50px;
+    width:50px;
+    text-align: center;
+  }
+  

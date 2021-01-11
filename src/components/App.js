@@ -3,15 +3,14 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { HandleGetData } from '../actions/shared'
 import SignIn from './SignIn'
-import QuestionPreview from './QuestionPreview'
-import AllQuestions from './AllQuestions'
 import Dashboard from './Dashboard'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import Question from './Question'
-//import LoadingBar from 'react-redux-loading'
+import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
 import PollResult from './PollResult'
-
+import NewQuestion from './NewQuestion'
+import LeaderBoard from './LeaderBoard'
 // import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends Component {
@@ -24,17 +23,18 @@ class App extends Component {
     return (
       <Router>
       <Fragment>
-      
-          {this.props.loading===true?
+          {this.props.authorized=== false?<SignIn/>:
+          this.props.loading===true?
           <div>Loading</div>:
-          
-          //<QuestionPreview questionID={'8xf0y6ziyjabvozdd253nd'}/>
-        //<AllQuestions questionIDS={["8xf0y6ziyjabvozdd253nd", "6ni6ok3ym7mf1p33lnez",  "am8ehyc8byjqgar0jgpub9",  "loxhs1bqm25b708cmbf3g"]}/>
-        <div>
+          <div>
          <Nav/>
         {/* <Route path='/' exact render={()=>(<PollResult qid={"xj352vofupe1dqz9emx13r"}/>) }/> */}
-        <Route path='/' exact render={()=>(<Question qid={'8xf0y6ziyjabvozdd253nd'}/>) }/>
-        
+        {/* <Route path='/' exact render={()=>(<Question match={{params:{qid:'8xf0y6ziyjabvozdd253nd'}}}/>) }/> */}
+        <Route path='/newQuestion' exact component={NewQuestion}/>
+        <Route path ='/' exact component ={Dashboard}/>
+        <Route path ='/question/:qid' exact component={Question}/>
+        <Route path ='/PollResult/:qid' exact component={PollResult}/>
+        <Route path ='/LeaderBoard' render={()=>(<LeaderBoard userId="sarahedo"/>)}/>
         </div>}
        </Fragment>
       </Router>   
@@ -49,7 +49,8 @@ class App extends Component {
 
 export default connect(
   ({ questions,users ,authedUser})=>(
-    { loading: Object.keys(users).length === 0 ||  Object.keys(questions).length === 0 ||  authedUser===null
+    { loading: Object.keys(users).length === 0 ||  Object.keys(questions).length === 0,
+      authorized: authedUser!==null
      }
   )  
   )(App)
