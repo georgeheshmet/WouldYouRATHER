@@ -6,7 +6,6 @@ export const users =(state={} , action)=>{
             return { ...action.users}
         case ADD_USER_ANSWER:
             const {authedUser, question_id, answer } = action
-            console.log("users",{questions:[...state[authedUser].questions, question_id]})
             return {
                 ...state,[authedUser]: {...state[authedUser], answers:{ ...state[authedUser].answers,[question_id]: answer} }
             }   

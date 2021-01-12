@@ -6,13 +6,13 @@ import { withRouter } from 'react-router-dom'
 class QuestionPreview extends Component {
 
   HandleViewPoll=()=>{
-    if( Object.keys(this.props.users[this.props.authedUser].answers).includes(this.props.question_id) ){
+    // if( Object.keys(this.props.users[this.props.authedUser].answers).includes(this.props.question_id) ){
     
-    this.props.history.push(`/PollResult/${this.props.question_id}`)
-    }
-    else{
-      this.props.history.push(`/question/${this.props.question_id}`)
-    }
+    this.props.history.push(`/question/${this.props.question_id}`)
+    // }
+    // else{
+    //   this.props.history.push(`/question/${this.props.question_id}`)
+    // }
   } 
 
     
@@ -51,13 +51,9 @@ class QuestionPreview extends Component {
   
   export default withRouter(connect(
       (state, passedProps)=>{
-          console.log(passedProps)
           const { questions, users, authedUser } =state
           const questionID  = passedProps.questionID
           const question= questions[questionID]
-          //console.log("question now", question)
-          //const { author }= question
-         //console.log("question hey",author)
           return{
              question: question, user: users[question.author], question_id:questionID, users:users, authedUser:authedUser
           }

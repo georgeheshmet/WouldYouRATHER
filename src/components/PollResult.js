@@ -7,8 +7,6 @@ import styles from 'semantic-ui-css/semantic.min.css'
 class PollResult extends Component {
     
     render() {
-        console.log(styles)
-        console.log("esult props",this.props)
       return (
           <div className='container rounded border p-3 m-2' >
               <div className='row justify-content-start'>
@@ -51,11 +49,10 @@ class PollResult extends Component {
       (state, passedProps)=>{
 
           const { questions, authedUser, users }= state
-          const { question_id }= passedProps.match.params
+          const { question_id }= passedProps
           const user= users[questions[question_id].author]
           const question=questions[question_id]
           const UserAnswer= users[authedUser].answers[question_id]
-          console.log("answer",UserAnswer)
           return {
               question:question, authedUser:authedUser, question_id:question_id, user: user,useranswer:UserAnswer
           }

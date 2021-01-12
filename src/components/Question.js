@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { HandleAnswer } from '../actions/shared'
+import PollResult from './PollResult'
 
 class Question extends Component {
 
@@ -25,7 +26,7 @@ class Question extends Component {
         
         
         this.props.dispatch(HandleAnswer({authedUser ,question_id,answer })).then(()=>(
-            this.props.history.push(`/PollResult/${this.props.question_id}`)
+            this.props.history.push(`/question/${this.props.question_id}`)
         )).catch((e)=>
             alert(`error ${e} occured`))
                         
@@ -35,9 +36,15 @@ class Question extends Component {
         this.setState(()=>({value:event.target.value}))
     }
     render() {
-        console.log(this.props)
+        if(this.props.error === true){
+            return <Redirect to ='/errorPage'/>
+        }
       return (
+       
           <div className='container rounded border p-3 m-2' >
+              { Object.keys(this.props.users[this.props.authedUser].answers).includes(this.props.question_id) === true?
+              <PollResult question_id = {this.props.question_id} />:
+            <div>
             <div className='row justify-content-start'>
                  <h6 className='col'>{this.props.user.name} asks:</h6>                 
             </div>
@@ -61,6 +68,8 @@ class Question extends Component {
                     </div>
                  </div>
             </div>
+            </div>
+            }
           </div>
       )
     }
@@ -74,13 +83,14 @@ class Question extends Component {
 
           const { questions, authedUser,users }= state
           const { question_id }= passedProps.match.params
-
+          let error = false
           const  question  = questions[question_id]
           if( question === undefined ){
-            passedProps.history.push('/errorPage')
+                error =true
+                return { error : error }
           }
           return {
-              question:questions[question_id], authedUser:authedUser, question_id:question_id, user:users[questions[question_id].author]
+              question:questions[question_id], authedUser:authedUser, error: error, question_id:question_id, user:users[questions[question_id].author], users: users
           }
 
       }

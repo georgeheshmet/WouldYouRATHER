@@ -14,7 +14,7 @@ export const HandleGetData =()=>{
             dispatch(GetUsers(users))
             dispatch(GetQuestions(questions))
             dispatch(hideLoading())
-        }).catch(console.log("failed to get data from server"))
+        }).catch((e)=>(alert(`${e} failed to get data from server`)))
     }
     }
 
