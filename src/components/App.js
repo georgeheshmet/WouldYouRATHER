@@ -39,6 +39,7 @@ class App extends Component {
         <Route path ='/question/:question_id' exact component={Question}/>
         <Route path ='/PollResult/:question_id' exact component={PollResult}/>
         <Route path ='/leaderboard' render={()=>(<LeaderBoard userId="sarahedo"/>)}/>
+        <Route path ='/errorPage' render={()=>(<div style={{alignContent:'center'}}><h1>ERROR 404 Page not found</h1></div>)}/>
         </div>}
        </Fragment>
       </Router>   

@@ -14,7 +14,7 @@ class LeaderBoard extends Component {
                 
                 <h2 style={{textAlign:'center'}} className='text-info '>LeaderBoard !</h2>
                 <div className='row justify-content-center'>
-                {userIDS.map((ID)=>(<UserScore userId={ID}/>))}
+                {userIDS.map((ID)=>(<UserScore key ={ID} userId={ID}/>))}
                 </div>
           </div>
       )

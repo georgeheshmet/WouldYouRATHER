@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { HandleAddQuestion } from '../actions/questions'
+import { HandleAddQuestion } from '../actions/shared'
 
 class NewQuestion extends Component {
 

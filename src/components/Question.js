@@ -74,6 +74,11 @@ class Question extends Component {
 
           const { questions, authedUser,users }= state
           const { question_id }= passedProps.match.params
+
+          const  question  = questions[question_id]
+          if( question === undefined ){
+            passedProps.history.push('/errorPage')
+          }
           return {
               question:questions[question_id], authedUser:authedUser, question_id:question_id, user:users[questions[question_id].author]
           }
