@@ -25,7 +25,7 @@ class PollResult extends Component {
                     <div>
 
                     <Progress percent={this.props.question.optionOne.votes.length>0?(this.props.question.optionOne.votes.length*100/(this.props.question.optionOne.votes.length+this.props.question.optionTwo.votes.length)):0} indicating />
-                    <h5>{this.props.question.optionOne.votes.length>0?(this.props.question.optionOne.votes.length*100/(this.props.question.optionOne.votes.length+this.props.question.optionTwo.votes.length)):0}%</h5>
+                    <h5>{this.props.question.optionOne.votes.length>0?Math.round(this.props.question.optionOne.votes.length*100/(this.props.question.optionOne.votes.length+this.props.question.optionTwo.votes.length)):0}%</h5>
                     <h5 style={{align:'center'}}>{this.props.question.optionOne.votes.length} out of {this.props.question.optionOne.votes.length+this.props.question.optionTwo.votes.length} votes</h5>
                     </div>
                  </div>
@@ -34,7 +34,7 @@ class PollResult extends Component {
 
                     Would you rather {this.props.question.optionTwo.text}?
                     <Progress percent={this.props.question.optionTwo.votes.length>0?(this.props.question.optionTwo.votes.length*100/(this.props.question.optionOne.votes.length+this.props.question.optionTwo.votes.length)):0} indicating />
-                    <h5>{this.props.question.optionTwo.votes.length>0?(this.props.question.optionTwo.votes.length*100/(this.props.question.optionOne.votes.length+this.props.question.optionTwo.votes.length)):0}%</h5>
+                    <h5>{this.props.question.optionTwo.votes.length>0?Math.round(this.props.question.optionTwo.votes.length*100/(this.props.question.optionOne.votes.length+this.props.question.optionTwo.votes.length)):0}%</h5>
                     <h5 style={{align:'center'}}>{this.props.question.optionTwo.votes.length} out of {this.props.question.optionOne.votes.length+this.props.question.optionTwo.votes.length} votes</h5>
                  </div>
                  </div>
