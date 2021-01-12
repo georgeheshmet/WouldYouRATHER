@@ -8,7 +8,8 @@ export const users =(state={} , action)=>{
             const {authedUser, question_id, answer } = action
             return {
                 ...state,[authedUser]: {...state[authedUser], answers:{ ...state[authedUser].answers,[question_id]: answer}}
-            }
+            }   
+           default:
+                return state  
     }
-    return state
 }

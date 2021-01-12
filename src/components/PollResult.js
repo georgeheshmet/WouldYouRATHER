@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Progress } from 'semantic-ui-react'
 import styles from 'semantic-ui-css/semantic.min.css'
-import { FiArrowDown } from "react-icons/fi"
 
 class PollResult extends Component {
     

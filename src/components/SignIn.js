@@ -44,7 +44,7 @@ class SignIn extends Component {
           <img
           style={{ width: 150, height: 150}}
             src={logo}
-            alt={'Would you rather image'}
+            alt={'Would you rather'}
             className='m-5'
             />
             </div>

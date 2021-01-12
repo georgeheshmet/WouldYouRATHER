@@ -26,9 +26,7 @@ class Question extends Component {
         
         this.props.dispatch(HandleAnswer({authedUser ,question_id,answer })).then(()=>(
             this.props.history.push(`/PollResult/${this.props.question_id}`)
-        )).
-        
-        catch((e)=>
+        )).catch((e)=>
             alert(`error ${e} occured`))
                         
         }
@@ -44,7 +42,7 @@ class Question extends Component {
                  <h6 className='col'>{this.props.user.name} asks:</h6>                 
             </div>
             <div className='row justify-content-start p-3'>
-                 <img className = 'avatar-big rounded-circle col-md-auto' src={this.props.user.avatarURL} />
+                 <img className = 'avatar-big rounded-circle col-md-auto' src={this.props.user.avatarURL} alt='alt'/>
                  <div className = 'col-md-auto'>
                      <h2>Would you rather....</h2>
                      <div>

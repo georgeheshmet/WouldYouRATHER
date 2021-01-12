@@ -38,7 +38,7 @@ class  Nav extends Component {
 
           <div className='nav-item m-2 row justify-content-center'>
             <h5 className='m-auto col-md-auto justify-content-center'>Hello, {this.props.users[this.props.authedUser].name}</h5>
-            <img className = 'avatar-small rounded-circle col-md-auto' src={this.props.users[this.props.authedUser].avatarURL} />
+            <img className = 'avatar-small rounded-circle col-md-auto' src={this.props.users[this.props.authedUser].avatarURL} alt='alt'/>
             <button type="button" className="btn btn-light btn-md" onClick={this.HandleLogOut}>Log out</button> 
             </div>
         </div>

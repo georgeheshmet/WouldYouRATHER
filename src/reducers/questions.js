@@ -14,6 +14,6 @@ export const questions =(state={} , action)=>{
           return {
               ...state, [action.question.id]: action.question
           }
+        default: return state
     }
-    return state
 }
